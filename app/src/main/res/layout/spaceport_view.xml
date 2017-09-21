@@ -19,12 +19,12 @@
         android:background="@drawable/background" />
 
     <TextView
-        android:id="@+id/moduleView"
+        android:id="@+id/releativeView"
         android:layout_width="155dp"
         android:layout_height="250dp"
         android:layout_alignLeft="@+id/resView"
         android:layout_alignStart="@+id/resView"
-        android:layout_alignTop="@+id/scrollView"
+        android:layout_alignTop="@+id/spaceportButtonSet"
         android:background="@drawable/background" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:background="@drawable/background" />
 
     <ScrollView
-        android:id="@+id/scrollView"
+        android:id="@+id/spaceportButtonSet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/logView"
@@ -51,7 +51,41 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/gotoPlanet"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="go to planet view" />
+        </RelativeLayout>
     </ScrollView>
 
+    <ScrollView
+        android:id="@+id/planetButtonSet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignEnd="@+id/logView"
+        android:layout_alignLeft="@+id/logView"
+        android:layout_alignRight="@+id/logView"
+        android:layout_alignStart="@+id/logView"
+        android:layout_below="@+id/logView"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:clickable="false">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/templateButton"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="go to planet view" />
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

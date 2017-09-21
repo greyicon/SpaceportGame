@@ -1,5 +1,7 @@
 package com.sgoldwax.spaceport;
 
+import android.app.Activity;
+import android.content.Context;
 import android.widget.TextView;
 
 import com.sgoldwax.spaceport.Enums.GameBuildings;
@@ -48,6 +50,9 @@ public class GameInfoManager {
     // Update the resource view text
     public void updateResView() {
         resView.setText(resourceManager.toString());
+
+
+
     }
 
     // Send text to the log window
