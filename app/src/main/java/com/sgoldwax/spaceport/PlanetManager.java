@@ -46,5 +46,13 @@ public class PlanetManager {
         return ret;
     }
 
+    public String toString() {
+        String str = "";
+        for (Building b : buildings) {
+            str += b.toString() + "\n";
+        }
+        return str;
+    }
+
 
 }

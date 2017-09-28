@@ -34,6 +34,12 @@ public class ResHolder {
         return resourcesList.size();
     }
 
+    public void add(ResHolder holder) {
+        for (int i = 0; i < holder.size(); i++) {
+            this.add(holder.resourcesList.get(i), holder.integerList.get(i));
+        }
+    }
+
     public String toString() {
         String ret = "";
         for (int i = 0; i < resourcesList.size(); i++) {

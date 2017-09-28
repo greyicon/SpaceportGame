@@ -29,6 +29,10 @@ public class Building {
         genAmount *= 2;
     }
 
+    public String toString() {
+        return buildingType.toString() + " - lvl " + level;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

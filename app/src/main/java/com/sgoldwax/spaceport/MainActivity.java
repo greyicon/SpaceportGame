@@ -16,7 +16,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView resView;
     private TextView relView;
 
-    private Button btnPlanetView;
+    // Spaceport ButtonSet
+    private Button btnSpaceportToPlanetView;
+    private Button testAddBuilding;
+
+    // Planet ButtonSet
+    private Button btnPlanetToSpaceportView;
 
     private GameInfoManager infoManager;
     private int gameClock;
@@ -35,10 +40,18 @@ public class MainActivity extends AppCompatActivity {
         initTextViews();
 
         // Initialize buttons
-        btnPlanetView = (Button) findViewById(R.id.gotoPlanet);
-        btnPlanetView.setOnClickListener(new View.OnClickListener() {
+        btnSpaceportToPlanetView = (Button) findViewById(R.id.fromSpaceportToPlanet);
+        btnSpaceportToPlanetView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                changeLocations(GameLocations.PLANET);
+            }
+        });
+        btnPlanetToSpaceportView = (Button) findViewById(R.id.fromPlanetToSpaceport);
+        btnPlanetToSpaceportView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeLocations(GameLocations.SPACEPORT);
             }
         });
 
@@ -56,12 +69,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // Do on-tick stuff
-
                 if (gameClock % 100 == 0) {
                     // Do every-second stuff
-
+                    // Generate resources
+                    ResHolder gen = infoManager.planetManager.getPlanetResourceGen();
+                    infoManager.resourceManager.resources.add(gen);
+                    resView.setText(infoManager.resourceManager.toString());
                 }
                 gameClock++;
+                handler.postDelayed(this, delay);
             }
         }, delay);
     }
@@ -79,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         s1.setClickable(false);
         s2.setVisibility(View.VISIBLE);
         s2.setClickable(true);
+        currentLocation = loc;
     }
 
     private ScrollView getScrollViewForLocation(GameLocations loc) {

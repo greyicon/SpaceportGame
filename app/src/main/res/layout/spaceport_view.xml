@@ -24,7 +24,8 @@
         android:layout_height="250dp"
         android:layout_alignLeft="@+id/resView"
         android:layout_alignStart="@+id/resView"
-        android:layout_alignTop="@+id/spaceportButtonSet"
+        android:layout_below="@+id/resView"
+        android:layout_marginTop="10dp"
         android:background="@drawable/background" />
 
     <TextView
@@ -37,6 +38,7 @@
         android:layout_marginRight="10dp"
         android:background="@drawable/background" />
 
+    <!-- Spaceport ButtonSet -->
     <ScrollView
         android:id="@+id/spaceportButtonSet"
         android:layout_width="match_parent"
@@ -50,18 +52,28 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <Button
-                android:id="@+id/gotoPlanet"
+                android:id="@+id/fromSpaceportToPlanet"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="go to planet view" />
+                android:layout_centerHorizontal="true"
+                android:text="go to planet" />
+
+            <Button
+                android:id="@+id/testBuilding"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fromSpaceportToPlanet"
+                android:layout_centerHorizontal="true"
+                android:text="test building" />
+
         </RelativeLayout>
     </ScrollView>
 
+    <!-- Planet ButtonSet -->
     <ScrollView
         android:id="@+id/planetButtonSet"
         android:layout_width="match_parent"
@@ -81,11 +93,11 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/templateButton"
+                android:id="@+id/fromPlanetToSpaceport"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="go to planet view" />
+                android:text="go to spaceport" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
