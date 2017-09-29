@@ -6,7 +6,7 @@ public enum GameModules {
     LIFE_SUPPORT,
     ;
 
-    public String toString(GameModules mod) throws MissingObjectException {
+    public String ToString(GameModules mod) throws MissingObjectException {
         switch(mod) {
             case LIFE_SUPPORT:
                 return "Life Support Module";

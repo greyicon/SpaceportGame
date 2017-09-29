@@ -3,13 +3,15 @@ package com.sgoldwax.spaceport.Enums;
 import com.sgoldwax.spaceport.Exceptions.MissingObjectException;
 
 public enum GameBuildings {
-    ALUMINUM,
+    ALUMINUM, OXYGEN,
     ;
 
-    public String toString(GameBuildings bld) throws MissingObjectException {
+    public String ToString(GameBuildings bld) throws MissingObjectException {
         switch(bld) {
             case ALUMINUM:
                 return "Aluminum Refinery";
+            case OXYGEN:
+                return "Atmospheric Condensor";
         }
         throw new MissingObjectException();
     }

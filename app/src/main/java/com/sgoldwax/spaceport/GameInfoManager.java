@@ -2,11 +2,13 @@ package com.sgoldwax.spaceport;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.sqlite.SQLiteFullException;
 import android.widget.TextView;
 
 import com.sgoldwax.spaceport.Enums.GameBuildings;
 import com.sgoldwax.spaceport.Enums.GameModules;
 import com.sgoldwax.spaceport.Enums.GameResources;
+import com.sgoldwax.spaceport.Exceptions.NotEnoughResourcesException;
 import com.sgoldwax.spaceport.Exceptions.TooManyModulesException;
 
 // Object used to store game info, such as resource stockpile, action to-do list, etc.
@@ -33,11 +35,6 @@ public class GameInfoManager {
 
         // Initialize ModuleManager, adding starting modules
         moduleManager = new ModuleManager();
-        try {
-            moduleManager.addModule(GameModules.LIFE_SUPPORT);
-        } catch (TooManyModulesException e) {
-            log("Too many modules. Create more life support modules to increase modules capacity.");
-        }
     }
 
     public void generateResources() {
@@ -47,12 +44,20 @@ public class GameInfoManager {
         }
     }
 
+    public void purchaseModule(Module mod) {
+        try {
+            resourceManager.resources.subtract(mod.cost);
+            moduleManager.addModule(mod);
+        } catch (NotEnoughResourcesException e) {
+            log("Purchase failed: Not enough resources.");
+        } catch (TooManyModulesException e) {
+            log("Purchase failed: Too many modules. Build more Life Support Modules.");
+        }
+    }
+
     // Update the resource view text
     public void updateResView() {
-        resView.setText(resourceManager.toString());
-
-
-
+        resView.setText(resourceManager.ToString());
     }
 
     // Send text to the log window

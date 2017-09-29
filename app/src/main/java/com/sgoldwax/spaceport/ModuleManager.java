@@ -8,22 +8,20 @@ import java.util.List;
 
 // Object for storing all Module objects
 public class ModuleManager {
-    public List<GameModules> modules;
-    int modCap;
+    public List<Module> modules;
+    public int modCap;
 
     public ModuleManager() {
-        modules = new ArrayList<GameModules>();
-        modules.add(GameModules.LIFE_SUPPORT);
+        modules = new ArrayList<Module>();
+        modules.add(new Module(GameModules.LIFE_SUPPORT, new ResHolder()));
         modCap = 3;
     }
 
-    public void addModule(GameModules mod) throws TooManyModulesException {
+    public void addModule(Module mod) throws TooManyModulesException {
         if (modules.size() < modCap) {
             modules.add(mod);
             return;
         }
         throw new TooManyModulesException();
     }
-
-
 }

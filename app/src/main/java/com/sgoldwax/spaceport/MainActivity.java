@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.sgoldwax.spaceport.Enums.GameBuildings;
 import com.sgoldwax.spaceport.Enums.GameLocations;
+import com.sgoldwax.spaceport.Enums.GameResources;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
     // Spaceport ButtonSet
     private Button btnSpaceportToPlanetView;
-    private Button testAddBuilding;
 
     // Planet ButtonSet
     private Button btnPlanetToSpaceportView;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spaceport_view);
+
+        currentLocation = GameLocations.SPACEPORT;
 
         // Initialize text views
         logView = (TextView) findViewById(R.id.logView);
@@ -54,8 +57,13 @@ public class MainActivity extends AppCompatActivity {
                 changeLocations(GameLocations.SPACEPORT);
             }
         });
-
-        currentLocation = GameLocations.SPACEPORT;
+        Button testbtn = (Button) findViewById(R.id.testBuilding);
+        testbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                infoManager.planetManager.addBuilding(GameBuildings.OXYGEN, GameResources.OXYGEN, 2);
+            }
+        });
 
         // Initialize GameInfoManager
         infoManager = new GameInfoManager(logView, resView);
@@ -69,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // Do on-tick stuff
+
+
                 if (gameClock % 100 == 0) {
                     // Do every-second stuff
                     // Generate resources
@@ -85,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     private void initTextViews() {
         logView.setText("Welcome to your spaceport, commander. \n\n");
         resView.setText("Resources: \n\n");
-        relView.setText("TODO");
+        updateRelativeText(currentLocation);
     }
 
     private void changeLocations(GameLocations loc) {
@@ -96,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         s2.setVisibility(View.VISIBLE);
         s2.setClickable(true);
         currentLocation = loc;
+        updateRelativeText(loc);
     }
 
     private ScrollView getScrollViewForLocation(GameLocations loc) {
@@ -109,5 +120,17 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return ret;
+    }
+
+    private void updateRelativeText(GameLocations loc) {
+        switch (loc) {
+            case SPACEPORT:
+                //TODO
+                relView.setText("TODO");
+                return;
+            case PLANET:
+                relView.setText(infoManager.planetManager.toString());
+                return;
+        }
     }
 }

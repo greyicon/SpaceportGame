@@ -20,7 +20,7 @@ public class ResourceManager {
         return resources.getInt(res);
     }
 
-    public String toString() {
-        return "Resources: \n" + resources.toString();
+    public String ToString() {
+        return "Resources: \n" + resources.ToString();
     }
 }
