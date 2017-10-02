@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Spaceport</string>
 
-    <!-- Initialize text -->
+
+
+    <!-- Errors -->
+    <string name="error_insufficient_resources">Not enough resources!</string>
+    <string name="error_module_cap">Too many modules! Additional life support systems required.</string>
 
 </resources>

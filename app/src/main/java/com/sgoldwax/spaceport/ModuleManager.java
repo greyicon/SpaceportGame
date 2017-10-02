@@ -13,7 +13,7 @@ public class ModuleManager {
 
     public ModuleManager() {
         modules = new ArrayList<Module>();
-        modules.add(new Module(GameModules.LIFE_SUPPORT, new ResHolder()));
+        modules.add(new Module(GameModules.LIFE_SUPPORT));
         modCap = 3;
     }
 
@@ -23,5 +23,15 @@ public class ModuleManager {
             return;
         }
         throw new TooManyModulesException();
+    }
+
+    public int numModulesOfType(GameModules mod) {
+        int i = 0;
+        for (Module m : modules) {
+            if (m.type.equals(mod)) {
+                i++;
+            }
+        }
+        return i;
     }
 }

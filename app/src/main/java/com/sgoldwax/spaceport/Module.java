@@ -3,27 +3,26 @@ package com.sgoldwax.spaceport;
 import com.sgoldwax.spaceport.Enums.GameModules;
 import com.sgoldwax.spaceport.Enums.GameResources;
 
-public class Module {
+public class Module implements PopHolder{
     public GameModules type;
     public ResHolder cost;
+    public int pop;
+    public int popCap;
 
     public Module(GameModules mod) {
         this.type = mod;
-        cost = initCost(mod);
+        cost = mod.getModCost();
+        pop = 0;
+        popCap = type.getPopCap();
     }
 
-    private ResHolder initCost(GameModules mod) {
-        ResHolder ret = new ResHolder();
-        switch (mod) {
-            case LIFE_SUPPORT:
-                ret.add(GameResources.ALUMINUM, 200);
-                ret.add(GameResources.OXYGEN, 200);
-                break;
-            case POP_QUARTERS:
-                ret.add(GameResources.ALUMINUM, 300);
-                ret.add(GameResources.BIOMASS, 150);
-        }
-        return ret;
+    @Override
+    public void removePop() {
+        pop--;
     }
 
+    @Override
+    public void addPop() {
+        pop++;
+    }
 }
