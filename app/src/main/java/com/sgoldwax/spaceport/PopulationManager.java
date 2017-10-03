@@ -12,11 +12,12 @@ public class PopulationManager {
 
     private ModuleManager moduleManager;
     private PlanetManager planetManager;
-    private ResourceManager resourceManager;
 
     private final int NUM_POP_PER_MODULE = 10;
 
-    public PopulationManager() {
+    public PopulationManager(ModuleManager mod, PlanetManager plt) {
+        moduleManager = mod;
+        planetManager = plt;
         numPop = 0;
         numVacantPop = 0;
     }
@@ -62,5 +63,9 @@ public class PopulationManager {
         }
         ret.removePop();
         return ret;
+    }
+
+    public int getBioCost() {
+        return numPop;
     }
 }

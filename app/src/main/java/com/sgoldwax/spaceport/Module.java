@@ -1,7 +1,6 @@
 package com.sgoldwax.spaceport;
 
 import com.sgoldwax.spaceport.Enums.GameModules;
-import com.sgoldwax.spaceport.Enums.GameResources;
 
 public class Module implements PopHolder{
     public GameModules type;
@@ -26,3 +25,4 @@ public class Module implements PopHolder{
         pop++;
     }
 }
+

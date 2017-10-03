@@ -25,13 +25,12 @@ public class PlanetManager {
 
     public void upgradeBuilding(Building bld) {
         bld.upgradeBuilding();
-        bld.doubleGenAmount();
     }
 
     public ResHolder getPlanetResourceGen() {
         ResHolder ret = new ResHolder();
         for (Building b : buildings) {
-            ret.add(b.genType, b.genAmount);
+            ret.add(b.genType, b.getGenAmount());
         }
         return ret;
     }
@@ -40,7 +39,7 @@ public class PlanetManager {
         int ret = 0;
         for (Building b : buildings) {
             if (b.genType.equals(res)) {
-                ret += b.genAmount;
+                ret += b.getGenAmount();
             }
         }
         return ret;

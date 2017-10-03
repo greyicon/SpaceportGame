@@ -7,14 +7,12 @@ import com.sgoldwax.spaceport.Enums.GameResources;
 public class Building implements PopHolder {
     public GameBuildings buildingType;
     public GameResources genType;
-    public int genAmount;
     public int level;
     public int pop;
 
     public Building(GameBuildings type, GameResources res, int i) {
         buildingType = type;
         genType = res;
-        genAmount = i;
         level = 1;
         pop = 0;
     }
@@ -23,12 +21,8 @@ public class Building implements PopHolder {
         level++;
     }
 
-    public void setGenAmount(int i) {
-        genAmount = i;
-    }
-
-    public void doubleGenAmount() {
-        genAmount *= 2;
+    public int getGenAmount() {
+        return (int) Math.pow(2 + Math.floor(pop / 3), level - 1);
     }
 
     public String toString() {

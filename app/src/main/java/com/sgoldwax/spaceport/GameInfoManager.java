@@ -1,12 +1,8 @@
 package com.sgoldwax.spaceport;
 
-import android.app.Activity;
-import android.content.Context;
-import android.database.sqlite.SQLiteFullException;
 import android.widget.TextView;
 
 import com.sgoldwax.spaceport.Enums.GameBuildings;
-import com.sgoldwax.spaceport.Enums.GameModules;
 import com.sgoldwax.spaceport.Enums.GameResources;
 import com.sgoldwax.spaceport.Exceptions.NotEnoughResourcesException;
 import com.sgoldwax.spaceport.Exceptions.TooManyModulesException;
@@ -19,6 +15,7 @@ public class GameInfoManager {
     public ResourceManager resourceManager;
     public ModuleManager moduleManager;
     public PlanetManager planetManager;
+    public PopulationManager populationManager;
 
     public GameInfoManager(TextView log, TextView res) {
         // Initialize text views
@@ -35,6 +32,9 @@ public class GameInfoManager {
 
         // Initialize ModuleManager, adding starting modules
         moduleManager = new ModuleManager();
+
+        // Initialize PopulationManager
+        populationManager = new PopulationManager();
     }
 
     public void generateResources() {

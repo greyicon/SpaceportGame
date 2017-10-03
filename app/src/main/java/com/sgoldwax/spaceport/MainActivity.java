@@ -8,9 +8,7 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.sgoldwax.spaceport.Enums.GameBuildings;
 import com.sgoldwax.spaceport.Enums.GameLocations;
-import com.sgoldwax.spaceport.Enums.GameResources;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,13 +53,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 changeLocations(GameLocations.SPACEPORT);
-            }
-        });
-        Button testbtn = (Button) findViewById(R.id.testBuilding);
-        testbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                infoManager.planetManager.addBuilding(GameBuildings.OXYGEN, GameResources.OXYGEN, 2);
             }
         });
 
@@ -125,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
     private void updateRelativeText(GameLocations loc) {
         switch (loc) {
             case SPACEPORT:
-                //TODO
                 relView.setText("TODO");
                 return;
             case PLANET:
